@@ -8,7 +8,7 @@ var _texSize = shader_get_uniform(shdBlendTerrain, "uTexSize");
 var _uBlendRate = shader_get_uniform(shdBlendTerrain, "uBlendRate");
 
 // Tile Map Drawing
-for(var _tileLayer = array_length(tilemapLayers) - 1; _tileLayer >= 0 ; _tileLayer--) {
+for(var _tileLayer = 0; _tileLayer < array_length(tilemapLayers); _tileLayer++) {
 	var _tileId = layer_tilemap_get_id(tilemapLayers[_tileLayer]);
 	
 	// Figure out what texture sprite to use for blending or undefined to bypass blending
@@ -31,7 +31,6 @@ for(var _tileLayer = array_length(tilemapLayers) - 1; _tileLayer >= 0 ; _tileLay
 		shader_set_uniform_f(_uBlendRate, 1); 
 	}
 	
-	gpu_set_ztestenable(false);
 	draw_tilemap(_tileId, 0, 0);
 	shader_reset();
 }

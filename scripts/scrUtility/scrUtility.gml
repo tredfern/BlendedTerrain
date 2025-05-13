@@ -11,7 +11,8 @@ function layerGetTilemaps() {
 			}
 	}
 	
-	return _tmLayers;
+    // We get the array front to back, we want to draw back to front
+	return array_reverse(_tmLayers);
 }
 
 
